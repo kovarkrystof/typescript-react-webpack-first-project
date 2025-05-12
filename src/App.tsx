@@ -11,16 +11,7 @@ const App: React.FC<AppProps> = ({ name = 'main' }) => {
   return (
     <main>
 
-
-
-
-      <div>
         <Board />
-      </div>
-
-
-
-
 
     </main>
   );

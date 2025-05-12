@@ -1,20 +1,21 @@
 import React from 'react';
-import { useState } from 'react';
 import './Square.css';
 
 interface SquareProps {
-  value?: string;
+  value: string;
+  onClick: () => void;
 }
 
-const Square: React.FC = (props: SquareProps) => {
-    const [value, setValue] = useState(' ');
+const Square = (props: SquareProps) => {
+    const { value, onClick } = props;
 
   return (
         <button
           type = "button"
           className='square'
-          onClick={() => setValue('O')}
-          onDoubleClick={() => setValue('X')}
+          onClick={() => {
+            onClick();
+          }}
           style={{
             width: '50px',
             height: '50px',
