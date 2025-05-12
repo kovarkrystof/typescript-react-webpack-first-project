@@ -1,16 +1,28 @@
 import React from 'react';
+import { useState } from 'react';
 import './App.css'; // Můžeme přidat CSS
+import Board from './components/Board/Board';
 
 interface AppProps {
   name?: string; // Volitelná prop
 }
 
-const App: React.FC<AppProps> = ({ name = 'Svět' }) => {
+const App: React.FC<AppProps> = ({ name = 'main' }) => {
   return (
-    <div>
-      <h1>Hello World!</h1>
-      <p>Hello World!</p>
-    </div>
+    <main>
+
+
+
+
+      <div>
+        <Board />
+      </div>
+
+
+
+
+
+    </main>
   );
 };
 

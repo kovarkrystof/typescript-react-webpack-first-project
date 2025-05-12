@@ -1,0 +1,30 @@
+/* Základní styl pro tlačítko */
+.square {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px; /* Vertikální zarovnání textu */
+  box-sizing: border-box; /* Zajistí, že padding a border neovlivní velikost */
+  border: 1px solid #ddd; /* Konzistentní okraj */
+  margin: 0; /* Odstranění případných rozdílů v okrajích */
+  padding: 0; /* Odstranění paddingu, pokud by byl přidán */
+  background-color: white; /* Výchozí barva pozadí */
+  transition: background-color 0.2s ease; /* Plynulý přechod pro pozadí */
+}
+
+/* Styl při najetí myší */
+.square:hover {
+  background-color: #f0f0f0; /* Světle šedé pozadí při hoveru */
+}
+
+/* Styl při zaměření (focus) */
+.square:focus {
+  outline: none; /* Odstranění výchozího outline */
+  border-color: #aaa; /* Změna barvy okraje při zaměření */
+}
+
+/* Styl při aktivním stavu (kliknutí) */
+.square:active {
+  background-color: #e0e0e0; /* Tmavší šedé pozadí při kliknutí */
+}
