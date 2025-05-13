@@ -17,6 +17,31 @@ const Board = () => {
             if (newBoard[row][col] === '') {
                 newBoard[row][col] = currentPlayer;
 
+              if (newBoard[0][0] === currentPlayer && newBoard[0][1] === currentPlayer && newBoard[0][2] === currentPlayer ||
+                  newBoard[1][0] === currentPlayer && newBoard[1][1] === currentPlayer && newBoard[1][2] === currentPlayer ||
+                  newBoard[2][0] === currentPlayer && newBoard[2][1] === currentPlayer && newBoard[2][2] === currentPlayer ||
+                  newBoard[0][0] === currentPlayer && newBoard[1][0] === currentPlayer && newBoard[2][0] === currentPlayer ||
+                  newBoard[0][1] === currentPlayer && newBoard[1][1] === currentPlayer && newBoard[2][1] === currentPlayer ||
+                  newBoard[0][2] === currentPlayer && newBoard[1][2] === currentPlayer && newBoard[2][2] === currentPlayer ||
+                  newBoard[0][0] === currentPlayer && newBoard[1][1] === currentPlayer && newBoard[2][2] === currentPlayer ||
+                  newBoard[0][2] === currentPlayer && newBoard[1][1] === currentPlayer && newBoard[2][0] === currentPlayer) {
+                    alert(`Player ${currentPlayer} wins!`)
+                    setBoard([
+                        ['', '', ''],
+                        ['', '', ''],
+                        ['', '', ''],
+                    ]);
+                    setCurrentPlayer('O');
+                    } else if (newBoard[0][0] !== '' && newBoard[0][1] !== '' && newBoard[0][2] !== '' && newBoard[1][0] !== '' && newBoard[1][1] !== '' && newBoard[1][2] !== '' && newBoard[2][0] !== '' && newBoard[2][1] !== '' && newBoard[2][2] !== '') {
+                    alert('It\'s a draw!');
+                    setBoard([
+                        ['', '', ''], 
+                        ['', '', ''],
+                        ['', '', ''],
+                    ]);
+                    setCurrentPlayer('O');
+                    }
+
             if (currentPlayer === 'O') {
                 setCurrentPlayer('X');
                 } else {
