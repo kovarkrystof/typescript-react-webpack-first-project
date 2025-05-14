@@ -1,43 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import './GameArea.css';
-import {Catcher} from '../Catcher/Catcher';
+import FallingObject from '../FallingObject/FallingObject';
 
+interface FallingObjectProps {
+    id: number;
+    x: number;
+    y: number;
+}
 
 const GameArea = () => {
-    const [gameArea, setGameArea] = useState<string[][]>([
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-    ]);
+    const [fallingObjects, setFallingObjects] = useState<FallingObjectProps[]>([]);
 
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            const randomX = Math.floor(Math.random() * 20);
+            const newFallingObject = { x: randomX, y: 0 };
 
-    const Keyboard = (event: KeyboardEvent) => {
-    setGameArea((prevGameArea) => {
-        const newGameArea = prevGameArea.map((row) => [...row]);
+            setFallingObjects((prevObjects) => {
+                const updatedObjects = prevObjects.map(object => ({ ...object, y: object.y + 1 }));
+                const withNewObject = [...updatedObjects, newFallingObject];
+                return withNewObject.filter(object => object.y < 20);
+            });
+        }, 500);
+    }, []); // Prázdné pole závislostí zajistí, že se useEffect spustí pouze jednou po prvním renderu
 
-        if (event.key === 'ArrowLeft' && catcherPosition > 0) {
-            setCatcherPosition(CatcherPositon - 1)
+    return (
+        <div className='GameArea'>
+            {fallingObjects.map((object, index) => (
+                <FallingObject key={object.id} x={object.x} y={object.y} />
+            ))}
+        </div>
+    );
 
-        } else if (event.key === 'ArrowRight' && catcherPosition < 19) {
-            setCatcherPosition(CatcherPositon + 1)
-        }
-
+    
 }
 
 export default GameArea;

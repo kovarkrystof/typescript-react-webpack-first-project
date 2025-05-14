@@ -1,12 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import './FallingObject.css';
 
-const FallingObject = () => {
-
+interface FallingObjectProps {
+    x: number;
+    y: number;
 }
 
-return (
-
-)
+const FallingObject: React.FC<FallingObjectProps> =  ({x, y}) => {
+    return (
+        <div
+            style={{
+                position: "absolute",
+                left: `${x * 20}px`,
+                top: `${y * 20}px`,
+                width: "20px",
+                height: "20px",
+                backgroundColor: "black",
+            }}
+        >
+        </div>
+    );
+}
 
 export default FallingObject;
