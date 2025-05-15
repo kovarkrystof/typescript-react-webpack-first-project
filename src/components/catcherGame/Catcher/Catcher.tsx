@@ -12,8 +12,8 @@ const Catcher: React.FC<CatcherProps> = ({position}) => {
             style={{
                 position: "absolute",
                 left: `${position.x * 20}px`,
-                bottom: '0px'
-                width: "40px",
+                bottom: '0px',
+                width: "60px",
                 height: "20px",
                 backgroundColor: "blue",
             }}
@@ -24,17 +24,3 @@ const Catcher: React.FC<CatcherProps> = ({position}) => {
 }
 
 export default Catcher;
-
-
-//    const KeyboardControl = (event: KeyboardEvent) => {
-//     switch (event.key) {
-//         case "ArrowLeft":
-//             setPosition((prev) => ({ ...prev, x: Math.max(0, prev.x - 1) }));
-//             break;
-//         case "ArrowRight":
-//             setPosition((prev) => ({ ...prev, x: Math.min(19, prev.x + 1) }));
-//             break;
-//         default:
-//             break;
-//     }   
-// Přidat to GameArea a sprovoznit ovlaádání šipkami
