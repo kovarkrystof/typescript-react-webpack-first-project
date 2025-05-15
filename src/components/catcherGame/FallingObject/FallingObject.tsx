@@ -6,7 +6,7 @@ interface FallingObjectProps {
     y: number;
 }
 
-const FallingObject: React.FC<FallingObjectProps> =  ({x, y}) => {
+const FallingObject =  ({x, y}: FallingObjectProps) => {
     return (
         <div
             style={{

@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Catcher.css";
 
 interface CatcherProps {
-    x: number;
+    position: {
+        x: number;
+    };
 }
 
-const Catcher: React.FC<CatcherProps> = ({position}) => {
+const Catcher = ({ position }: CatcherProps) => {
     return (
         <div
             className="Catcher"
             style={{
                 position: "absolute",
                 left: `${position.x * 20}px`,
-                bottom: '0px',
+                bottom: '20px',
                 width: "60px",
                 height: "20px",
                 backgroundColor: "blue",
@@ -20,7 +22,6 @@ const Catcher: React.FC<CatcherProps> = ({position}) => {
         >
         </div>
     );
-
-}
+};
 
 export default Catcher;
