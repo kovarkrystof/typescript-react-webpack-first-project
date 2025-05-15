@@ -54,7 +54,7 @@ const GameArea = () => {
         const nextFallingObjects: FallingObjectProps[] = [];
 
         for (const object of fallingObjects) {
-            if (object.y === 19) {
+            if (object.y === 19 ) {
                 if (object.x >= catcherPosition.x && object.x < catcherPosition.x + 3) {
                     newScore++;
                 } else {
